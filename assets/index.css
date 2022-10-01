@@ -1,0 +1,5 @@
+.logo::first-letter{
+	color: grey;
+	font-weight: bolder;
+	color: cyan;
+}
