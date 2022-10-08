@@ -1,5 +1,45 @@
+body{
+	background-image: url('https://www.teahub.io/photos/full/3-35055_marvel-avengers-age-of-ultron-uhd-4k-wallpaper.jpg');
+	background-size: contain;
+	background-attachment: fixed;
+	background-color: grey;
+
+}
+	
 .logo::first-letter{
 	color: grey;
 	font-weight: bolder;
 	color: cyan;
+}
+
+.thumbnail{
+	height: 250px;
+}
+.container{
+	/* margin: 50px 20px; */
+	min-width: 100%;
+	margin-top: 50vh;
+}
+
+.container .hero{
+	max-height: 22rem;
+	box-shadow: 1px 1px 1px 1px lightgrey;
+}
+
+.hero:hover{
+	box-shadow: 2px 2px 10px 5px black;
+}
+
+.search > input {
+	width: 60vw;
+	margin: 50px auto !important;
+}
+
+.content h1{
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 8rem;	
+	text-shadow: 2px 2px black;
+}
+.content h2{
+	font-family: 'Dancing Script', cursive;
 }
