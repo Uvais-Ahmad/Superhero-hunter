@@ -1,4 +1,6 @@
-$(document).ready(findData);
+// $(document).ready(findData);
+let main = document.querySelector('main')
+findData();
 
 async function findData(){
 	const urlParams = await new URLSearchParams(window.location.search);
@@ -10,31 +12,50 @@ async function findData(){
 
 async function fetchDataAsync(id){
 	
-	await $.ajax({
-		type : 'get',
-		url : `https://www.superheroapi.com/api.php/1168930280669000/${id}`,
-		success : function(data ){
-					console.log('Data : ',data);
-					let item = `<div class="left">
-									<img src="${data['image']['url']}">
-								</div>
-								<div class="right">
-									<h1 class="text-white heading">${data.name}<h1>
-									<p>full name : ${data['biography']['full-name']}</p>
-									<p>Combat : ${data['powerstats']['combat']}</p>
-									<p>Intelligence :  ${data['powerstats']['intelligence']}</p>
-									<p>Strength : ${data['powerstats']['strength']}</p>
-									<p>Occupation : ${data['work']['occupation']}</p>
-								</div>`
-					$('main').append(item);
-
-
-		},error : function(err){
-			console.log('Error Occur : ',err)
-		}
+	await fetch(`https://www.superheroapi.com/api.php/1168930280669000/${id}`)
+	.then(res => res.json())
+	.then((data) => {
+		console.log('Data : ',data);
+			let item = `<div class="left">
+							<img src="${data['image']['url']}">
+						</div>
+						<div class="right">
+							<h1 class="text-white heading">${data.name}<h1>
+							<p>full name : ${data['biography']['full-name']}</p>
+							<p>Combat : ${data['powerstats']['combat']}</p>
+							<p>Intelligence :  ${data['powerstats']['intelligence']}</p>
+							<p>Strength : ${data['powerstats']['strength']}</p>
+							<p>Occupation : ${data['work']['occupation']}</p>
+						</div>`
+			main.innerHTML += item;
 
 	})
+	.catch(error => console.error('Error while fetching req : ',error))
 }
 
-				
+			//I removed this code Bcoz its JQuery req code			
 		
+// await $.ajax({
+	// 	type : 'get',
+	// 	url : `https://www.superheroapi.com/api.php/1168930280669000/${id}`,
+	// 	success : function(data ){
+	// 				console.log('Data : ',data);
+	// 				let item = `<div class="left">
+	// 								<img src="${data['image']['url']}">
+	// 							</div>
+	// 							<div class="right">
+	// 								<h1 class="text-white heading">${data.name}<h1>
+	// 								<p>full name : ${data['biography']['full-name']}</p>
+	// 								<p>Combat : ${data['powerstats']['combat']}</p>
+	// 								<p>Intelligence :  ${data['powerstats']['intelligence']}</p>
+	// 								<p>Strength : ${data['powerstats']['strength']}</p>
+	// 								<p>Occupation : ${data['work']['occupation']}</p>
+	// 							</div>`
+	// 				$('main').append(item);
+
+
+	// 	},error : function(err){
+	// 		console.log('Error Occur : ',err)
+	// 	}
+
+	// })
