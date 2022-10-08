@@ -1,0 +1,41 @@
+body{
+	background-image: url('images/backMarvel2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+main{
+	
+	height: 50vh;
+	width: 70%;
+	margin-top: 10vh;
+	margin-left: 15%;
+}
+
+
+main .left{
+	border: 1px solid white;
+	width: 30vw;
+	height: 50vh;
+}
+.left img{
+	height: 100%;
+	width: 100%;
+	
+}
+
+.right p{
+	color: white;
+	font-size: 1.6rem;
+	margin: 10px;
+	margin-left: 40px;	
+	color: #1d5a61;
+	font-weight: bolder;
+}
+.right .heading{
+	margin-left: 40px;
+	color: black !important;
+	font-family: fantasy;
+	letter-spacing: .1rem;
+	font-size: 3rem;
+}

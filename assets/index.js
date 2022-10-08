@@ -21,7 +21,7 @@ async function fetchDataAsync(id){
 			let item = `<div class="card item h-50 m-4 hero" style="width: 13rem;">
 							<img src=${data.image.url} class="card-img-top thumbnail" alt="...">
 							<div class="card-body">
-								<h5 class="card-title text-center"><a class="text-decoration-none" href='#'>${data.name}</a></h5>							    
+								<h5 class="card-title text-center"><a class="text-decoration-none" href=assets/showDetails.html?id=${data.id}>${data.name}</a></h5>							    
 							</div>
 						</div>`
 	// <p class="card-text">Actor : ${data['biography']['full-name']}</p>
