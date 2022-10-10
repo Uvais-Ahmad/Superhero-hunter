@@ -44,3 +44,15 @@ body{
 .content h2{
 	font-family: 'Dancing Script', cursive;
 }
+
+
+.fav-btn{
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+
+}
+.fav-btn > img{
+	height: 100%;
+	width: 100%
+}
