@@ -11,11 +11,12 @@ async function fetchAndLoadListner(){
 	}
 	let favBtn = document.getElementsByClassName('fav-btn')
 	
-	//apply eventListner on Each Favicon
+	//apply eventListner on Each Favicon and Show Which Already favouratedd
 	for(f of favBtn){
-		console.log('This is Fav',f)
-		await f.addEventListener('click',addToFavourite);
-	}
+
+		showFavExistence(f);
+		
+	}  	
 }
 
 
@@ -26,7 +27,6 @@ async function fetchDataAsync(id){
 	await fetch(`${url}/${id}`)
 	.then(res => res.json())
 	.then( (data) => {
-		console.log("This is Data Comes using fetch : ",data);
 
 		let item = `<div class="card item h-50 m-4 hero" style="width: 13rem;">
 						<img src=${data.image.url} class="card-img-top thumbnail" alt="...">
@@ -51,32 +51,34 @@ async function fetchDataAsync(id){
 async function addToFavourite(e){
 	let id = e.target.id;
 	let fav = getFavId();
-	console.log('This is FavList ',fav , "Thsi is Id var : ",id)
+	console.log("Add to fav to this id : ",id)
 	if(!fav.includes(id)){
 		fav.push(id)
+		console.log('its new so Push')
 	}
 	//making list to string
 	await localStorage.setItem('favorites',fav);
-	console.log('This is Fav From localStorge : ',localStorage.getItem('favorites'))
-
 	await e.target.parentElement.removeEventListener('click',addToFavourite);
+	console.log('Fav After Add : ',localStorage.getItem('favorites'))
 	e.target.src="assets/images/fav.png"
 	e.target.alt="favourite"
 	await e.target.parentElement.addEventListener('click',removeFromFavourite)
+
 }
 
 // to removing from the favourite
 async function removeFromFavourite(e){
-	
+
 	let id = e.target.id;
 	let fav = getFavId();
+
+	console.log("Remove from fav to this id : ",id)
 	let newFav =await fav.filter((f)=>{
 		return f != id
 	})
 
 	localStorage.setItem('favorites',newFav)
-	console.log('This is New Fav List after remove : ',localStorage.getItem('favorites'))
-
+	console.log('Fav After remove : ',localStorage.getItem('favorites'))
 
 	await e.target.parentElement.removeEventListener('click',removeFromFavourite);
 	e.target.src="assets/images/unFav.png"
@@ -99,4 +101,22 @@ function getFavId(){
 		fav = value.split(",");
 	}
 	return fav;
+}
+
+
+//Show Which is already exist in Favourite list
+async function showFavExistence(f){
+	let child = f.children[0]
+	let id = child.getAttribute('id')
+	let fav = getFavId();
+	//If current Tag id is Exist in fav then add removeFav listner
+	if(fav.includes(id)){
+		await f.addEventListener('click',removeFromFavourite);
+		//update fav icon
+		child.setAttribute('src','assets/images/fav.png')
+		child.setAttribute('alt','favourite')
+	}
+	else{
+		await f.addEventListener('click',addToFavourite);	
+	}
 }
