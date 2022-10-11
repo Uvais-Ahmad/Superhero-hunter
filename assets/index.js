@@ -6,7 +6,7 @@ fetchAndLoadListner();
 
 //Fetch all data and then it load Event Listner on all Favourite btn
 async function fetchAndLoadListner(){
-	for(let id=1 ; id<40 ; id++){
+	for(let id=1 ; id<15 ; id++){
 		await fetchDataAsync(id);
 	}
 	let favBtn = document.getElementsByClassName('fav-btn')
