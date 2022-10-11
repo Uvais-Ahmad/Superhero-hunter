@@ -4,7 +4,7 @@ let container = document.querySelector('.container');
 
 fetchAndLoadListner();
 
-//FeTCH all data and then it load Event Listner on all Favourite btn
+//Fetch all data and then it load Event Listner on all Favourite btn
 async function fetchAndLoadListner(){
 	for(let id=1 ; id<40 ; id++){
 		await fetchDataAsync(id);
@@ -49,7 +49,16 @@ async function fetchDataAsync(id){
 
 //To adding in the favourite
 async function addToFavourite(e){
-	
+	let id = e.target.id;
+	let fav = getFavId();
+	console.log('This is FavList ',fav , "Thsi is Id var : ",id)
+	if(!fav.includes(id)){
+		fav.push(id)
+	}
+	//making list to string
+	await localStorage.setItem('favorites',fav);
+	console.log('This is Fav From localStorge : ',localStorage.getItem('favorites'))
+
 	await e.target.parentElement.removeEventListener('click',addToFavourite);
 	e.target.src="assets/images/fav.png"
 	e.target.alt="favourite"
@@ -59,8 +68,35 @@ async function addToFavourite(e){
 // to removing from the favourite
 async function removeFromFavourite(e){
 	
+	let id = e.target.id;
+	let fav = getFavId();
+	let newFav =await fav.filter((f)=>{
+		return f != id
+	})
+
+	localStorage.setItem('favorites',newFav)
+	console.log('This is New Fav List after remove : ',localStorage.getItem('favorites'))
+
+
 	await e.target.parentElement.removeEventListener('click',removeFromFavourite);
 	e.target.src="assets/images/unFav.png"
 	e.target.alt="Unfav"
 	await e.target.parentElement.addEventListener('click',addToFavourite)
+}
+
+
+
+
+
+//GET all superhero id from localstorage
+function getFavId(){
+	let fav;
+	let value = localStorage.getItem('favorites');
+	if(value === null){
+		fav = [];
+	}else{
+		//making string to array
+		fav = value.split(",");
+	}
+	return fav;
 }
