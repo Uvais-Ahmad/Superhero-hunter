@@ -22,7 +22,7 @@
 			        	<a class="nav-link active mx-2" id="homeTab" aria-current="page" href="#">Home</a>
 			        </li>
 			        <li class="nav-item">
-			        	<a class="nav-link mx-2" href="#" id="favTab">Favourites</a>
+			        	<a class="nav-link mx-2" href="assets/favourite.html" id="favTab">Favourites</a>
 			        </li>
 			    </ul>
 			</div>		    
@@ -33,9 +33,12 @@
 		<h1 class="text-secondary">Superheroes Hunter</h1>
 		<h2>Your one spot to get the data of all the superheroes and villains n the Universe!</h2>
 
-		<form class="d-flex justify-content-between ms-auto me-2 search">
-		  	<input class="form-control me-2" type="search"
+		<form class="d-flex justify-content-between ms-auto me-2 search-container">
+		  	<input class="form-control me-2 " id="search" type="search"
 		  	 placeholder="Type Superhero's Name (example : superman)" aria-label="Search">
+		  	 <div id="search-result-container">
+		  	 	
+		  	 </div>
 		</form>
 			
 	</div>
@@ -46,9 +49,8 @@
 		
 	</main>
 
-	<h4 class="text-center my-4">Search for more...</h4>
+	<h4 class="text-center my-4 text-primary">Search for more...</h4>
 	
 	<script type="text/javascript" src="assets/index.js"></script>
-	<script type="text/javascript" src="assets/favourite.js"></script>
 </body>
 </html>

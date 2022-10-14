@@ -120,3 +120,24 @@ async function showFavExistence(f){
 		await f.addEventListener('click',addToFavourite);	
 	}
 }
+
+
+
+// ===========================Search functionality======================================
+let searchBox = document.querySelector('#search');
+let searchResultCont = document.querySelector('#search-result-container');
+
+loadEventListner();
+function loadEventListner() {
+	searchBox.addEventListener('keyup',handlerSearch);
+}
+
+
+function handlerSearch (e) {
+	console.log('This is KeyUp ',e.keyCode)
+	
+	//this remove the whitespace from start and end
+	let name = e.target.value.trim();
+	// if(e.keyCode )
+	console.log('name : ', name, 'length : ')
+}

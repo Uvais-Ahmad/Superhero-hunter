@@ -1,8 +1,9 @@
 body{
 	background-image: url('images/backMarvel.jpg');
-	background-size: contain;
+	background-size: cover;
 	background-attachment: fixed;
 	background-color: grey;
+	background-repeat: no-repeat;
 
 }
 	
@@ -31,7 +32,7 @@ body{
 	box-shadow: 2px 2px 10px 5px black;
 }
 
-.search > input {
+.search-container > input {
 	width: 60vw;
 	margin: 50px auto !important;
 }
