@@ -16,16 +16,18 @@ async function fetchDataAsync(id){
 	.then(res => res.json())
 	.then((data) => {
 		console.log('Data : ',data);
-			let item = `<div class="left">
-							<img src="${data['image']['url']}">
-						</div>
-						<div class="right">
-							<h1 class="text-white heading">${data.name}<h1>
-							<p>full name : ${data['biography']['full-name']}</p>
-							<p>Combat : ${data['powerstats']['combat']}</p>
-							<p>Intelligence :  ${data['powerstats']['intelligence']}</p>
-							<p>Strength : ${data['powerstats']['strength']}</p>
-							<p>Occupation : ${data['work']['occupation']}</p>
+			let item = `<div id="showDetail">
+							<div class="left">
+								<img src="${data['image']['url']}">
+							</div>
+							<div class="right">
+								<h1 class="text-white heading">${data.name}<h1>
+								<p>full name : ${data['biography']['full-name']}</p>
+								<p>Combat : ${data['powerstats']['combat']}</p>
+								<p>Intelligence :  ${data['powerstats']['intelligence']}</p>
+								<p>Strength : ${data['powerstats']['strength']}</p>
+								<p>Occupation : ${data['work']['occupation']}</p>
+							</div>
 						</div>`
 			main.innerHTML += item;
 

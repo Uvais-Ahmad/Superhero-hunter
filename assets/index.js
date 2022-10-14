@@ -2,12 +2,13 @@
 let url = 'https://www.superheroapi.com/api.php/1168930280669000';
 let container = document.querySelector('.container');
 
+
 fetchAndLoadListner();
 
 //Fetch all data and then it load Event Listner on all Favourite btn
 async function fetchAndLoadListner(){
 	for(let id=1 ; id<15 ; id++){
-		await fetchDataAsync(id);
+		await fetchDataAsync(`${url}/${id}`);
 	}
 	let favBtn = document.getElementsByClassName('fav-btn')
 	
@@ -22,9 +23,9 @@ async function fetchAndLoadListner(){
 
 
 //Fech single Data using the ID
-async function fetchDataAsync(id){
+async function fetchDataAsync(url){
 
-	await fetch(`${url}/${id}`)
+	await fetch(url)
 	.then(res => res.json())
 	.then( (data) => {
 
@@ -134,10 +135,34 @@ function loadEventListner() {
 
 
 function handlerSearch (e) {
-	console.log('This is KeyUp ',e.keyCode)
+	
 	
 	//this remove the whitespace from start and end
 	let name = e.target.value.trim();
-	// if(e.keyCode )
-	console.log('name : ', name, 'length : ')
+	
+	if(name !== ""){
+		fetch(`${url}/search/${name}`)
+		.then(res => res.json())
+		.then( (data) => {
+			if(data.response === 'success'){
+				searchResultCont.innerHTML = ''
+				let heroes = data.results
+				// console.log("This ",heroes)	
+				for( hero  of heroes ){
+					let li = document.createElement('li');
+					let a = document.createElement('a')
+					a.innerHTML = hero.name;
+					a.setAttribute('id', hero.id);
+					a.setAttribute('href',`assets/showDetails.html?id=${hero.id}`)
+					a.classList.add('item');
+					li.appendChild(a);
+					searchResultCont.appendChild(li);
+				}
+			}
+			
+		} )
+	}
+	else{
+		searchResultCont.innerHTML = ''
+	}
 }

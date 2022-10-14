@@ -33,12 +33,12 @@
 		<h1 class="text-secondary">Superheroes Hunter</h1>
 		<h2>Your one spot to get the data of all the superheroes and villains n the Universe!</h2>
 
-		<form class="d-flex justify-content-between ms-auto me-2 search-container">
-		  	<input class="form-control me-2 " id="search" type="search"
+		<form class="d-flex justify-content-between ms-auto me-2 search-container position-relative">
+		  	<input class="form-control me-2" id="search" type="search"
 		  	 placeholder="Type Superhero's Name (example : superman)" aria-label="Search">
-		  	 <div id="search-result-container">
-		  	 	
-		  	 </div>
+		  	 <ul class="position-absolute bg-white text-dark text-start" id="search-result-container">
+		  			<!-- Added dynamically -->
+		  	 </ul>
 		</form>
 			
 	</div>

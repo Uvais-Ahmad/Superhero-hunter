@@ -1,5 +1,5 @@
 body{
-	background-image: url('images/backMarvel2.jpg');
+	background-image: url('images/backMarvel3.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -13,15 +13,14 @@ main{
 }
 
 
-main .left{
+#showDetail .left{
 	border: 1px solid white;
-	width: 30vw;
-	height: 50vh;
+	width: 200px;
+	height: 300px;
 }
 .left img{
 	height: 100%;
 	width: 100%;
-	
 }
 
 .right p{
@@ -35,7 +34,7 @@ main .left{
 .right .heading{
 	margin-left: 40px;
 	color: black !important;
-	font-family: fantasy;
+	font-family: sans-serif;
 	letter-spacing: .1rem;
 	font-size: 3rem;
 }
